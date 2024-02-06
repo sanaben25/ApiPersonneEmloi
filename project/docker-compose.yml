@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  php:
+    build: .
+    volumes:
+      - ./php/vhosts:/etc/apache2/sites-enabled
+      - ./app//3:/var/www/
+    ports:
+      - 9400:80
+    networks:
+      - dev
+
+  mysql:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ROOT
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+networks:
+  dev:

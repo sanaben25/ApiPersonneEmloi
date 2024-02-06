@@ -1,0 +1,20 @@
+1: installation de docker et docker compose:
+Docker : https://www.docker.com/get-started
+Docker-compose: https://docs.docker.com/compose/install/
+
+
+2: modifier le ficker Dockerfile: 
+   RUN git config --global user.email "votre email de compte github" \
+    &&  git config --global user.name "password"
+
+3: docker-compose up -d
+
+
+5: acceder au container php: composer install
+
+6: create bdd: symfony console doctrine:database:create
+7: create migration: symfony console doctrine:migrations:migrate
+8: load fixtures: 
+        composer require --dev orm-fixtures
+        symfony console doctrine:fixtures:load
+10 : http://localhost:9403/api
